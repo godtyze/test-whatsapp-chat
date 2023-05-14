@@ -12,9 +12,11 @@
   },
   "dependencies": {
     "@green-api/whatsapp-api-client": "^0.3.35",
+    "@reduxjs/toolkit": "^1.9.5",
     "antd": "^5.4.7",
     "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "react-dom": "^18.2.0",
+    "react-router-dom": "^6.11.1"
   },
   "devDependencies": {
     "@types/react": "^18.0.28",
