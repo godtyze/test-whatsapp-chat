@@ -4,10 +4,7 @@ import { RootState } from 'store/index';
 import { UserState } from 'types';
 
 const initialState: UserState = {
-  credentials: {
-    idInstance: '',
-    apiTokenInstance: '',
-  },
+  credentials: null,
   isAuth: false,
 };
 
