@@ -16,7 +16,7 @@ interface FormValues {
 }
 
 const prefixSelector = (
-  <Form.Item name="prefix" noStyle initialValue="7">
+  <Form.Item name="prefixNumber" noStyle initialValue="7">
     <Select style={{ width: 70 }}>
       <Select.Option value="7">+7</Select.Option>
     </Select>
@@ -61,7 +61,7 @@ const AuthForm: FC = () => {
           <Input placeholder="apiTokenInstance" autoComplete="off" />
         </Form.Item>
         <Form.Item
-          name="recieverNumber"
+          name="receiverNumber"
           hasFeedback
           rules={[{ required: true, message: 'Номер получателя не может быть пустым!' }]}
         >

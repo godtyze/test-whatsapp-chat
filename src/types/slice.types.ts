@@ -1,5 +1,5 @@
 export interface UserState {
-  credentials: UserCredentials | null;
+  credentials: UserCredentials;
   isAuth: boolean;
 }
 

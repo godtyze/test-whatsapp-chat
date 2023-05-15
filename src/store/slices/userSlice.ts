@@ -4,7 +4,11 @@ import { RootState } from 'store/index';
 import { UserState } from 'types';
 
 const initialState: UserState = {
-  credentials: null,
+  credentials: {
+    idInstance: '',
+    apiTokenInstance: '',
+    receiverNumber: '',
+  },
   isAuth: false,
 };
 

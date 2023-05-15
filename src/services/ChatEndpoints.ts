@@ -10,9 +10,10 @@ import {
 
 export const chatEndpoints = baseAPI.injectEndpoints({
   endpoints: (builder) => ({
-    getChatHistory: builder.query<GetChatHistoryResponse, GetChatHistoryRequest>({
+    getChatHistory: builder.mutation<GetChatHistoryResponse, GetChatHistoryRequest>({
       query: ({ idInstance, apiTokenInstance, chatId, count }) => ({
-        url: `waInstance${idInstance}/ReceiveNotification/${apiTokenInstance}`,
+        url: `waInstance${idInstance}/getChatHistory/${apiTokenInstance}`,
+        method: 'POST',
         body: { chatId, count },
       }),
     }),
@@ -24,10 +25,14 @@ export const chatEndpoints = baseAPI.injectEndpoints({
     sendMessage: builder.mutation<SendMessageResponse, SendMessageRequest>({
       query: ({ idInstance, apiTokenInstance }) => ({
         url: `waInstance${idInstance}/SendMessage/${apiTokenInstance}`,
+        method: 'POST',
       }),
     }),
   }),
 });
 
-export const { useGetChatHistoryQuery, useSendMessageMutation, useGetMessagesNotificationQuery } =
-  chatEndpoints;
+export const {
+  useGetChatHistoryMutation,
+  useSendMessageMutation,
+  useGetMessagesNotificationQuery,
+} = chatEndpoints;
