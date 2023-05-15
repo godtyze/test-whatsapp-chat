@@ -54,8 +54,8 @@ const AuthForm: FC = () => {
           name="apiTokenInstance"
           hasFeedback
           rules={[
-            { required: true, message: 'idInstance не может быть пустым!' },
-            { whitespace: true, message: 'idInstance не может быть пустым!' },
+            { required: true, message: 'apiTokenInstance не может быть пустым!' },
+            { whitespace: true, message: 'apiTokenInstance не может быть пустым!' },
           ]}
         >
           <Input placeholder="apiTokenInstance" autoComplete="off" />
