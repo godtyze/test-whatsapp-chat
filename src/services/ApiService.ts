@@ -8,5 +8,6 @@ const baseQuery = fetchBaseQuery({
 
 export const baseAPI = createApi({
   baseQuery,
+  tagTypes: ['Message'],
   endpoints: () => ({}),
 });

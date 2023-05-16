@@ -3,8 +3,10 @@ import { FC } from 'react';
 import { Button, Card, Form, Input, InputNumber, Select } from 'antd';
 import { useNavigate } from 'react-router-dom';
 
+import { useAppSelector } from 'hooks/redux';
 import { useActions } from 'hooks/useActions';
 import routes from 'router/routes';
+import { selectCredentials } from 'store/slices/userSlice';
 import 'styles/components/AuthForm.css';
 import { convertNumber } from 'utils';
 
@@ -24,6 +26,7 @@ const prefixSelector = (
 );
 
 const AuthForm: FC = () => {
+  const { idInstance, apiTokenInstance } = useAppSelector(selectCredentials);
   const { setCredentials, setAuth } = useActions();
   const navigate = useNavigate();
 
@@ -43,6 +46,7 @@ const AuthForm: FC = () => {
         <Form.Item
           name="idInstance"
           hasFeedback
+          initialValue={idInstance}
           rules={[
             { required: true, message: 'idInstance не может быть пустым!' },
             { whitespace: true, message: 'idInstance не может быть пустым!' },
@@ -53,6 +57,7 @@ const AuthForm: FC = () => {
         <Form.Item
           name="apiTokenInstance"
           hasFeedback
+          initialValue={apiTokenInstance}
           rules={[
             { required: true, message: 'apiTokenInstance не может быть пустым!' },
             { whitespace: true, message: 'apiTokenInstance не может быть пустым!' },

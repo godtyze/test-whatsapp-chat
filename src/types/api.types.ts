@@ -19,15 +19,40 @@ export interface SendMessageBody {
   linkPreview?: boolean;
 }
 
+export interface ReadChatRequest extends RequestParams {
+  chatId: string;
+  idMessage?: string;
+}
+
+export interface ReadChatResponse {
+  setRead: boolean;
+}
+
 export interface MessageFromHistory {
-  type: 'incoming' | 'outgoing';
+  type: MessageFromHistoryType;
+  textMessage: string;
   timestamp: number;
   idMessage: string;
   typeMessage: TypeMessage;
   chatId: string;
-  senderId: string;
-  senderName: string;
-  textMessage: string;
+  statusMessage?: StatusMessage;
+  senderId?: string;
+  senderName?: string;
+  extendedTextMessage?: ExtendedTextMessage;
+  contact?: string;
+  location?: string;
+  caption?: string;
+  downloadUrl?: string;
+}
+
+export type MessageFromHistoryType = 'incoming' | 'outgoing';
+
+export interface ExtendedTextMessage {
+  text: string;
+  description: string;
+  title: string;
+  previewType: string;
+  jpegThumbnail: string;
 }
 
 export type GetChatHistoryResponse = MessageFromHistory[];
@@ -76,6 +101,8 @@ export type TypeMessage =
   | 'locationMessage'
   | 'contactMessage'
   | 'extendedMessage';
+
+export type StatusMessage = 'pending' | 'sent' | 'delivered' | 'read';
 
 export interface TextMessageData {
   textMessage: string;
