@@ -107,3 +107,8 @@ export type StatusMessage = 'pending' | 'sent' | 'delivered' | 'read';
 export interface TextMessageData {
   textMessage: string;
 }
+
+export interface ApiErrorResponse {
+  status: number;
+  data: unknown;
+}

@@ -1,11 +1,12 @@
 import { FC } from 'react';
 
-import { Layout, Spin } from 'antd';
+import { Layout, notification, Spin } from 'antd';
 
 import ChatForm from 'components/chat-form/ChatForm';
 import { useAppSelector } from 'hooks/redux';
 import { useGetChatHistoryQuery, useReadChatQuery } from 'services/ChatEndpoints';
 import { selectCredentials } from 'store/slices/userSlice';
+import { getErrorMessage } from 'utils';
 
 const ChatPage: FC = () => {
   const {
@@ -19,12 +20,20 @@ const ChatPage: FC = () => {
       pollingInterval: 5000,
     }
   );
+
   useReadChatQuery(
     { chatId, idInstance, apiTokenInstance },
     {
-      // pollingInterval: 5000,
+      pollingInterval: 7000,
     }
   );
+
+  if (error) {
+    notification.error({
+      message: 'Произошла ошибка!',
+      description: getErrorMessage(error),
+    });
+  }
 
   if (isLoading || !data) {
     return (
