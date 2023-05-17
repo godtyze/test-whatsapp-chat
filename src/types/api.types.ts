@@ -109,6 +109,6 @@ export interface TextMessageData {
 }
 
 export interface ApiErrorResponse {
-  status: number;
+  status: number | string;
   data: unknown;
 }

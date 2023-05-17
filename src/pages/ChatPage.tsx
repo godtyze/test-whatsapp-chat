@@ -32,7 +32,7 @@ const ChatPage: FC = () => {
     notification.error({
       message: 'Произошла ошибка!',
       description: getErrorMessage(error),
-      duration: 5,
+      duration: 4,
     });
   }
 

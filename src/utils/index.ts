@@ -7,12 +7,19 @@ export const convertNumber = (prefix: string, number: number): string => {
 export const getNumber = (sender: string) => sender.slice(0, sender.indexOf('@'));
 
 export const isApiError = (error: unknown): error is ApiErrorResponse => {
-  return typeof error === 'object' && error !== null && 'data' in error && 'status' in error;
+  return (
+    typeof error === 'object' &&
+    error !== null &&
+    ('data' in error || 'error' in error) &&
+    'status' in error
+  );
 };
 
 export const getErrorMessage = (error: unknown): string | null => {
   let errorMessage = '';
-  if (!error || !isApiError(error)) return null;
+  if (!error || !isApiError(error)) {
+    return null;
+  }
 
   switch (error.status) {
     case 466:
@@ -21,6 +28,10 @@ export const getErrorMessage = (error: unknown): string | null => {
 
     case 429:
       errorMessage = 'Слишком много запросов';
+      break;
+
+    case 'FETCH_ERROR':
+      errorMessage = 'Проверьте правильность введенных данных';
       break;
 
     default:
